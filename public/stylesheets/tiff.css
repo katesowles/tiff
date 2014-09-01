@@ -133,6 +133,7 @@ body #primary .container .font-select #select1 a.btn,
 body #primary .container .font-select #select2 a.btn {
   width: 67px;
   color: #FFF;
+  background-color: #999;
   text-align: center;
   display: inline-block;
   padding: 8px 0;
@@ -140,14 +141,14 @@ body #primary .container .font-select #select2 a.btn {
 body #primary .container .font-select #select1 {
   float: left;
 }
-body #primary .container .font-select #select1 a.btn {
-  background-color: #72B3CC;
+body #primary .container .font-select #select1 label {
+  color: #72B3CC;
 }
 body #primary .container .font-select #select2 {
   float: right;
 }
-body #primary .container .font-select #select2 a.btn {
-  background-color: #c75646;
+body #primary .container .font-select #select2 label {
+  color: #c75646;
 }
 body #primary .container .font-select label {
   font-size: 20px;
