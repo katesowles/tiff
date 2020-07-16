@@ -1,15 +1,15 @@
-define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger', 'messenger-theme-future'], function($) {
+define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger', 'messenger-theme-future'], function ($) {
   Messenger.options = {
     extraClasses: 'messenger-fixed messenger-on-top messenger-on-right',
     theme: 'future'
   }
 
-  $(document).ready(function() {
+  $(document).ready(function () {
     function main(fid, context) {
       var
-      control,
-      experiment,
-      $this = $(context);
+        control,
+        experiment,
+        $this = $(context);
 
       if (fid === 1) {
         control = $('#control').val();
@@ -32,16 +32,16 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
           google: {
             families: [control]
           },
-          fontactive: function(name, description) {
-                        displayAll(fid, name);
-                      },
-          fontinactive: function(name, description) {
-                          Messenger().post({
-                            message: "Sadly Tiff couldn't recognize that font.",
-                            type: 'error',
-                            showCloseButton: true
-                          });
-                        }
+          fontactive: function (name, description) {
+            displayAll(fid, name);
+          },
+          fontinactive: function (name, description) {
+            Messenger().post({
+              message: "Sadly Tiff couldn't recognize that font.",
+              type: 'error',
+              showCloseButton: true
+            });
+          }
         });
       } else {
         $('#select' + fid).find('input').attr('disabled', false);
@@ -51,13 +51,13 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
     }
 
     function displayAll(id, name) {
-      $('.font' + id).each(function() {
+      $('.font' + id).each(function () {
         this.style.fontFamily = name;
 
         $(this).animate({
           opacity: 0.5
         }, 500)
-      }); 
+      });
     }
 
     function hideAll(id) {
@@ -66,57 +66,24 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
       }, 500);
     }
 
-    /*
-     *  // Old font existence detection
-     *
-     *  function fontExists(name) {
-     *    var f1 = $('#fontcheck1')[0];
-     *    var f2 = $('#fontcheck2')[0];
-     *
-     *    f1.style.fontFamily = "monospace";
-     *    f2.style.fontFamily = name + ",monospace";
-     *
-     *    var w1 = Number(f1.offsetWidth);
-     *    var w2 = Number(f2.offsetWidth);
-     *    var h1 = Number(f1.offsetHeight);
-     *    var h2 = Number(f2.offsetHeight);
-     *
-     *    // First check if it would fall back to system default monospace
-     *    if ((w1 === w2) && (h1 === h2)) {
-     *      // Second check (in case the input IS system default monospace) if it would 
-     *      // fall back to Arial
-     *      f1.style.fontFamily = "Arial";
-     *      f2.style.fontFamily = name + ",Arial";
-     *
-     *      if ((w1 === w2) && (h1 === h2)) {
-     *        return false;
-     *      } else {
-     *        return true;
-     *      }
-     *    } else {
-     *      return true;
-     *    }
-     *  }
-     */
-
-    $('#select1 a.btn').click(function() {
+    $('#select1 a.btn').click(function () {
       main(1, this);
       return false;
     });
 
-    $('#select2 a.btn').click(function() {
+    $('#select2 a.btn').click(function () {
       main(2, this);
       return false;
     });
 
-    $('figure.canvas').hover(function() {
+    $('figure.canvas').hover(function () {
       $(this).stop().animate({ backgroundColor: "#EEEEEE" }, 'slow');
-    }, function() {
+    }, function () {
       $(this).stop().animate({ backgroundColor: "#FFFFFF" }, 'slow'); // original color
     });
 
     // View mode toggle
-    $('#overlay').click(function() { 
+    $('#overlay').click(function () {
       $('#switch').animate({ 'marginLeft': '0px' }, 300);
 
       $(this).removeClass('inactive');
@@ -128,7 +95,7 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
       }, 300);
     });
 
-    $('#sideways').click(function() {
+    $('#sideways').click(function () {
       $('#switch').animate({ 'marginLeft': '25px' }, 300);
 
       $(this).removeClass('inactive');
@@ -141,14 +108,14 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
     });
 
     // Edit letters
-    $('.edit-letters input').focus(function() {
+    $('.edit-letters input').focus(function () {
       var $this = $(this);
       var id = $this.attr('class');
       var letter = $this.val();
 
-      $this.val(''); 
-      $this.focusout(function() { $this.val(letter); });
-      $this.keypress(function(e) {
+      $this.val('');
+      $this.focusout(function () { $this.val(letter); });
+      $this.keypress(function (e) {
         letter = String.fromCharCode(e.which);
         $this.val(letter);
         $('.font-display .canvas span.' + id).text(letter);
@@ -168,9 +135,9 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
     });
 
     // Footer styling
-    $("footer a").hover(function() {
+    $("footer a").hover(function () {
       $(this).stop().animate({ color: "#00B7FF" }, 'slow');
-    }, function() {
+    }, function () {
       $(this).stop().animate({ color: "#AAAAAA" }, 'slow'); // original color
     });
 
@@ -183,12 +150,12 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
       dataType: "jsonp",
       key: GoogleAPIKey
     })
-    .done(function(data) {
-      $.each(data.items, function(index, item) {
-        fontList.push(item.family);
-      });
+      .done(function (data) {
+        $.each(data.items, function (index, item) {
+          fontList.push(item.family);
+        });
 
-      $('.font-select input').autocomplete({ source: fontList });
-    });
+        $('.font-select input').autocomplete({ source: fontList });
+      });
   });
 });

@@ -1,121 +1,132 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css" />
-    <link rel="stylesheet" href="stylesheets/tiff.css" />
-    <link rel="stylesheet" href="bower_components/messenger/build/css/messenger.css" />
-    <link rel="stylesheet" href="bower_components/messenger/build/css/messenger-theme-future.css" />
-    <script data-main="javascripts/main.js" src="bower_components/requirejs/require.js"></script>
-  </head>
 
-  <body>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<head>
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css" />
+  <link rel="stylesheet" href="stylesheets/tiff.css" />
+  <link rel="stylesheet" href="bower_components/messenger/build/css/messenger.css" />
+  <link rel="stylesheet" href="bower_components/messenger/build/css/messenger-theme-future.css" />
+  <script data-main="javascripts/main.js" src="bower_components/requirejs/require.js"></script>
+</head>
 
-      ga('create', 'UA-43634577-1', 'tiff.herokuapp.com');
-      ga('send', 'pageview');
-    </script>
+<body>
+  <script>
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-    <section id="secondary">
+    ga('create', 'UA-43634577-1', 'tiff.herokuapp.com');
+    ga('send', 'pageview');
+  </script>
+
+  <section id="secondary">
+    <div class="container">
+      <h1>Tiff</h1>
+      <h2 class="left">A type diff tool that visually contrasts the differences between two fonts.</h2>
       <div class="container">
         <h1>Tiff</h1>
         <h2 class="left">A type diff tool that visually contrasts the differences between two fonts.</h2>
-        <p class="right">Currently supports fonts from the <a href="//www.google.com/fonts/">Google Web Fonts library</a> and any system fonts. Best if viewed on the latest version of modern browsers.</p>
+        <p class="right">Currently supports fonts from the <a href="//www.google.com/fonts/">Google Web Fonts
+            library</a>
+          and any system fonts. Best if viewed on the latest version of modern browsers.</p>
       </div>
-    </section>
+  </section>
 
-    <section id="primary">
-      <div class="container">
-        <section class="font-select">
-          <div id="select1">
-            <label>Font A</label>
-            <input id="control" value="Inter" disabled="disabled" />
-            <a class="btn">Hide</a>
-          </div>
+  <section id="primary">
+    <div class="container">
+      <section class="font-select">
+        <div id="select1">
+          <label>Font A</label>
+          <input id="control" value="Inter" disabled="disabled" />
+          <a class="btn">Hide</a>
+        </div>
 
-          <div id="select2">
-            <label>Font B</label>
-            <input id="experiment" placeholder="e.g. Times New Roman" autofocus="autofocus" />
-            <a class="btn">Display</a>
-          </div>
+        <div id="select2">
+          <label>Font B</label>
+          <input id="experiment" placeholder="e.g. Times New Roman" autofocus="autofocus" />
+          <a class="btn">Display</a>
+        </div>
+      </section>
+
+      <section class="font-display putCanvasesHere">
+        <figure class="canvas zoomTarget" data-closeclick="true">
+          <span class="letter1 font1">R</span>
+          <span class="letter1 font2">R</span>
+        </figure>
+
+        <figure class="canvas zoomTarget" data-closeclick="true">
+          <span class="letter2 font1">g</span>
+          <span class="letter2 font2">g</span>
+        </figure>
+
+        <figure class="canvas zoomTarget" data-closeclick="true">
+          <span class="letter3 font1">h</span>
+          <span class="letter3 font2">h</span>
+        </figure>
+
+        <figure class="canvas zoomTarget" data-closeclick="true">
+          <span class="letter4 font1">e</span>
+          <span class="letter4 font2">e</span>
+        </figure>
+      </section>
+
+      <section class="contrast-mode">
+        <a id="overlay">Overlay</a>
+        <span id="switch-box">
+          <span id="switch"></span>
+        </span>
+        <a id="sideways" class="inactive">Sideways</a>
+      </section>
+
+      <section class="edit-letters">
+        <p>Edit to see different letters</p>
+        <div class="putInputsHere">
+          <input class="letter1" value="R" maxlength="1" />
+          <input class="letter2" value="g" maxlength="1" />
+          <input class="letter3" value="h" maxlength="1" />
+          <input class="letter4" value="e" maxlength="1" />
+        </div>
+        <p>or <a id="reset">reset</a> to default</p>
+      </section>
+
+      <img src="images/end.png" alt="End" id="end" />
+
+      <footer>
+        <section class="left">
+          <p>Created by Mu Ye (<a href="//twitter.com/yemutex">@yemutex</a>)</p>
+          <p><a href="//github.com/yemutex/tiff">Tiff on GitHub</a></p>
         </section>
-
-        <section class="font-display">
-          <figure class="canvas zoomTarget" data-closeclick="true">
-            <span class="letter1 font1">R</span>
-            <span class="letter1 font2">R</span>
-          </figure>
-
-          <figure class="canvas zoomTarget" data-closeclick="true">
-            <span class="letter2 font1">g</span>
-            <span class="letter2 font2">g</span>
-          </figure>
-
-          <figure class="canvas zoomTarget" data-closeclick="true">
-            <span class="letter3 font1">h</span>
-            <span class="letter3 font2">h</span>
-          </figure>
-
-          <figure class="canvas zoomTarget" data-closeclick="true">
-            <span class="letter4 font1">e</span>
-            <span class="letter4 font2">e</span>
-          </figure>
+        <section class="right">
+          <div class="fb-like" data-href="http://tiff.herokuapp.com" data-send="false" data-layout="button_count"
+            data-width="90" data-show-faces="false" data-font="lucida grande"></div>
+          <a href="https://twitter.com/share" class="twitter-share-button"
+            data-text="Tiff, a visual typeface diff tool.">Tweet</a>
         </section>
+      </footer>
+    </div>
+  </section>
 
-        <section class="contrast-mode">
-          <a id="overlay">Overlay</a>
-          <span id="switch-box">
-            <span id="switch"></span>
-          </span>
-          <a id="sideways" class="inactive">Sideways</a>
-        </section>
-
-        <section class="edit-letters">
-          <p>Edit to see different letters</p>
-          <div>
-            <input class="letter1" value="R" maxlength="1" />
-            <input class="letter2" value="g" maxlength="1" />
-            <input class="letter3" value="h" maxlength="1" />
-            <input class="letter4" value="e" maxlength="1" />
-          </div>
-          <p>or <a id="reset">reset</a> to default</p>
-        </section>
-
-        <img src="images/end.png" alt="End" id="end" />
-
-        <footer>
-          <section class="left">
-            <p>Created by Mu Ye (<a href="//twitter.com/yemutex">@yemutex</a>)</p>
-            <p><a href="//github.com/yemutex/tiff">Tiff on GitHub</a></p>
-          </section>
-          <section class="right">
-            <div class="fb-like" data-href="http://tiff.herokuapp.com" data-send="false" data-layout="button_count" data-width="90" data-show-faces="false" data-font="lucida grande"></div>
-            <a href="https://twitter.com/share" class="twitter-share-button" data-text="Tiff, a visual typeface diff tool.">Tweet</a>
-          </section>
-        </footer>
-      </div>
-    </section>
-
-    <!-- Social Network Buttons -->
-    <div id="fb-root"></div>
-    <script>(function(d, s, id) {
+  <!-- Social Network Buttons -->
+  <div id="fb-root"></div>
+  <script>(function (d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
       js = d.createElement(s); js.id = id;
       js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
       fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
 
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + '://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); } }(document, 'script', 'twitter-wjs');</script>
 
-    <!-- For font detector -->
-    <p id="fontcheck1">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890</p>
-    <p id="fontcheck2">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890</p>
-  </body>
+  <!-- For font detector -->
+  <p id="fontcheck1">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890</p>
+  <p id="fontcheck2">abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890</p>
+</body>
+
 </html>
