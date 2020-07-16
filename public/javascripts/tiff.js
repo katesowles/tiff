@@ -5,6 +5,24 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
   }
 
   $(document).ready(function () {
+    const fullList = generateListOfCharacters()
+    $('#fontcheck1').text(fullList)
+    $('#fontcheck2').text(fullList)
+
+    fullList.map((char, index) => {
+
+      $('.putCanvasesHere').append(`
+        <figure class="canvas zoomTarget" data-closeclick="true">
+          <span class="letter${index + 1} font1">${char}</span>
+          <span class="letter${index + 1} font2">${char}</span>
+        </figure>
+      `)
+
+      $('.putInputsHere').append(`
+        <input class="letter${index + 1}" value="${char}" maxlength="1" />
+      `)
+    })
+
     function main(fid, context) {
       var
         control,
@@ -141,15 +159,11 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
     });
 
     // Reset letters
-    $('#reset').click(function() {
-      $('.font-display span.letter1').text('R');
-      $('.font-display span.letter2').text('g');
-      $('.font-display span.letter3').text('h');
-      $('.font-display span.letter4').text('e');
-      $('.edit-letters .letter1').val('R');
-      $('.edit-letters .letter2').val('g');
-      $('.edit-letters .letter3').val('h');
-      $('.edit-letters .letter4').val('e');
+    $('#reset').click(function () {
+      generateListOfCharacters().map((char, index) => {
+        $(`.font-display span.letter${index + 1}`).text(char);
+        $(`.edit-letters .letter${index + 1}`).val(char);
+      })
     });
 
     // Footer styling
