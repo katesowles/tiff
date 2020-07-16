@@ -179,7 +179,6 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
     var fontList = [];
 
     $.getJSON(WebFontAPI, {
-      dataType: "jsonp",
       key: GoogleAPIKey
     })
       .done(function (data) {
