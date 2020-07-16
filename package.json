@@ -4,15 +4,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "postinstall": "bower cache clean && bower install"
   },
   "dependencies": {
     "express": "3.2.6",
     "ejs": "*",
     "less-middleware": "*",
     "bower": "1.3.9"
-  },
-  "scripts": {
-    "postinstall": "bower cache clean && bower install"
   }
 }
