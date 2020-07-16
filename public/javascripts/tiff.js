@@ -50,6 +50,24 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
       }
     }
 
+    function generateListOfCharacters() {
+      const ranges = [
+        { start: 48, end: 57 }, // 0-9
+        { start: 65, end: 90 }, // A-Z
+        { start: 97, end: 122 }, // a-z
+      ]
+
+      const characterSets = ranges.map((range) => {
+        const set = []
+        for (let i = range.start; i <= range.end; i++) set.push(i);
+        return set;
+      })
+
+      const allCharacters = characterSets[0].concat(characterSets[1], characterSets[2]);
+
+      return allCharacters.map(code => String.fromCharCode(code));
+    }
+
     function displayAll(id, name) {
       $('.font' + id).each(function () {
         this.style.fontFamily = name;
