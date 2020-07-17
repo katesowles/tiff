@@ -13,70 +13,39 @@
 </head>
 
 <body>
-  <section id="secondary">
-    <div class="container">
-      <h1>Tiff</h1>
-      <h2 class="left">A type diff tool that visually contrasts the differences between two fonts.</h2>
-      <div class="container">
-        <h1>Tiff</h1>
-        <h2 class="left">A type diff tool that visually contrasts the differences between two fonts.</h2>
-        <p class="right">Currently supports fonts from the <a href="//www.google.com/fonts/">Google Web Fonts
-            library</a>
-          and any system fonts. Best if viewed on the latest version of modern browsers.</p>
-      </div>
-  </section>
-
-  <section id="primary">
-    <div class="container">
-      <section class="font-select">
-        <div id="select1">
-          <label>Font A</label>
+  <main id="primary">
+    <section class="font-select">
+      <div id="select1">
+        <label>Font A</label>
+        <div>
           <input id="control" value="Inter" disabled="disabled" />
           <a class="btn">Hide</a>
         </div>
+      </div>
 
-        <div id="select2">
-          <label>Font B</label>
+      <div id="select2">
+        <label>Font B</label>
+        <div>
           <input id="experiment" placeholder="e.g. Times New Roman" autofocus="autofocus" />
           <a class="btn">Display</a>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="font-display putCanvasesHere"></section>
+    <section class="font-display putCanvasesHere"></section>
 
-      <section class="contrast-mode">
-        <a id="overlay">Overlay</a>
-        <span id="switch-box">
-          <span id="switch"></span>
-        </span>
-        <a id="sideways" class="inactive">Sideways</a>
-      </section>
-
-      <section class="edit-letters">
-        <p>Edit to see different letters</p>
-        <div class="putInputsHere"></div>
-        <p>or <a id="reset">reset</a> to default</p>
-      </section>
-
-      <img src="images/end.png" alt="End" id="end" />
-
-      <footer>
-        <section class="left">
-          <p>Created by Mu Ye (<a href="//twitter.com/yemutex">@yemutex</a>)</p>
-          <p><a href="//github.com/yemutex/tiff">Tiff on GitHub</a></p>
-        </section>
-        <section class="right">
-          <div class="fb-like" data-href="http://tiff.herokuapp.com" data-send="false" data-layout="button_count"
-            data-width="90" data-show-faces="false" data-font="lucida grande"></div>
-          <a href="https://twitter.com/share" class="twitter-share-button"
-            data-text="Tiff, a visual typeface diff tool.">Tweet</a>
-        </section>
-      </footer>
-    </div>
-  </section>
-
-  <!-- Social Network Buttons -->
-  <div id="fb-root"></div>
+    <footer>
+      <div class="left">
+        <p>Created by Mu Ye <a href="//github.com/yemutex/tiff">@yemutex&nbsp;on&nbsp;Github</a></p>
+      </div>
+      <div class="center">
+        <p><a id="reset">reset to default</a></p>
+      </div>
+      <div class="right">
+        <p>Updated by Kate <a href="//github.com/katesowles/tiff">@katesowles&nbsp;on&nbsp;Github</a></p>
+      </div>
+    </footer>
+  </main>
 
   <!-- For font detector -->
   <p id="fontcheck1"></p>

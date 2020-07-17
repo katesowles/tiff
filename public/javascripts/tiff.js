@@ -69,10 +69,11 @@ define(['jquery', 'jquery-ui', 'jquery-color', 'webfont', 'zoomooz', 'messenger'
     }
 
     function generateListOfCharacters() {
+      // TODO: sort upper and lower case next to each other -- could use uppercase loercase and only one of the charFromCode sets
       const ranges = [
-        { start: 48, end: 57 }, // 0-9
         { start: 65, end: 90 }, // A-Z
         { start: 97, end: 122 }, // a-z
+        { start: 48, end: 57 }, // 0-9
       ]
 
       const characterSets = ranges.map((range) => {
